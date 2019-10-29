@@ -2,7 +2,7 @@ const { Router } = require('express')
 const router = new Router()
 const Dino = require('./model')
 
-router.get('/dinosaur', (req, res, next) => {
+router.get('/', (req, res, next) => {
   Dino.findAll()
     .then(dino => {
       res.json(dino)
@@ -10,7 +10,7 @@ router.get('/dinosaur', (req, res, next) => {
     .catch(error => next(error))
 })
 
-router.get('/dinosaur/:id', (req, res, next) => {
+router.get('/:id', (req, res, next) => {
   Dino.findOne({
     where: {
       id: req.params.id
@@ -25,7 +25,7 @@ router.get('/dinosaur/:id', (req, res, next) => {
     .catch(error => next(error))
 })
 
-router.post('/dinosaur', (req, res, next) => {
+router.post('/', (req, res, next) => {
   const body = req.body
   const dinosaur = {
     name: body.name,
@@ -52,7 +52,7 @@ router.post('/dinosaur', (req, res, next) => {
     .catch(error => next(error))
 })
 
-router.delete('/dinosaur/:id', (req, res, next) => {
+router.delete('/:id', (req, res, next) => {
   Dino.destroy({
     where: {
       id: req.params.id
@@ -73,7 +73,7 @@ router.delete('/dinosaur/:id', (req, res, next) => {
 })
 
 
-router.put('/dinosaur/:id', (req, res, next) => {
+router.put('/:id', (req, res, next) => {
   Dino.findOne({
     where: { id: req.params.id }
   })
