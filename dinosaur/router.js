@@ -38,19 +38,22 @@ router.post('/dinosaur', (req, res, next) => {
     named_by: body.named_by,
     taxonomy: body.taxonomy
   }
-  Dino.create(dinosaur)
-    .then(dino => {
-      if (dino.name.length < 3 || dino.image < 3 || 
-        dino.diet < 3 || dino.found_in < 1 || 
-        dino.named_by < 3 || dino.taxonomy < 3) {
-        res.status(404).send({
-          message: 'Please fill in all the inputs with valid data'
-        })
-      }
-      res.json(dino)
-    })
-    .catch(error => next(error))
+  if (dinosaur.name.length < 3 || dinosaur.image.length < 3 ||
+    dinosaur.type_of_dinosaur < 3 || dinosaur.when_it_lived < 3 ||
+    dinosaur.diet.length < 3 || dinosaur.found_in.length < 1 ||
+    dinosaur.named_by.length < 3 || dinosaur.taxonomy.length < 3) {
+    return (res.status(404).send({
+      message: 'Please fill in all the inputs with valid data'
+    }))
+  } else {
+    Dino.create(dinosaur)
+      .then(dino => {
+        res.json(dino)
+      })
+      .catch(error => next(error))
+  }
 })
+
 
 router.delete('/dinosaur/:id', (req, res, next) => {
   Dino.destroy({

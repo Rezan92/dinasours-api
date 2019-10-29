@@ -14,7 +14,7 @@ const Dino = sequelize.define(
       type: Sequelize.STRING,
     },
     lenght: {
-      type: Sequelize.INTEGER,
+      type: Sequelize.DECIMAL,
     },
     diet: {
       type: Sequelize.STRING,
