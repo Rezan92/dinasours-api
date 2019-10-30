@@ -35,6 +35,7 @@ router.post('/dinosaur', (req, res, next) => {
     diet: body.diet,
     when_it_lived: body.when_it_lived,
     found_in: body.found_in,
+    more_info: body.more_info,
     named_by: body.named_by,
     taxonomy: body.taxonomy
   }

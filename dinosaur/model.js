@@ -25,12 +25,15 @@ const Dino = sequelize.define(
     found_in: {
       type: Sequelize.STRING,
     },
-    named_by: {
-      type: Sequelize.STRING,
+    more_info: {
+      type: Sequelize.STRING
     },
     taxonomy: {
       type: Sequelize.STRING
-    }
+    },
+    named_by: {
+      type: Sequelize.STRING,
+    },
   }
 )
 
